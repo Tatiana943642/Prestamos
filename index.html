@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Universidad Francisco de Paula Santander - Sistema de Préstamos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- 🔹 Logo oficial de la universidad (guárdalo en assets/ufps-logo.png) -->
+        <img src="assets/ufps-logo.png" alt="Logo UFPS" class="logo">
+        <div class="brand-text">
+          <h1>Universidad Francisco de Paula Santander</h1>
+          <p class="subtitle">Sistema de Préstamos de Juegos</p>
+        </div>
+      </div>
+
+      <!-- 🔹 Navegación -->
+      <nav class="nav">
+        <a href="#">Inicio</a>
+        <a href="#">Estudiantes</a>
+        <a href="#">Contacto</a>
+      </nav>
+
+      <!-- 🔹 Usuario actual -->
+      <div class="user">Administrador</div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <main class="hero">
+    <img src="assets/main-character.png" class="hero-char" alt="Personaje principal">
+    <h2>¿Qué juego te gustaría <span class="accent">prestar?</span></h2>
+    <div class="searchbar">
+      <input placeholder="Buscar juego: UNO, Ajedrez, Pin Pon..." type="search" id="search">
+      <button id="searchBtn">Buscar</button>
+    </div>
+  </main>
+
+  <!-- ===== INVENTARIO ===== -->
+  <section class="inventory container">
+    <div class="tabs">
+      <button class="tab active">Préstamos</button>
+      <button class="tab">Inventario</button>
+      <button class="tab">Historial</button>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <img src="assets/uno.png" class="card-media" alt="Juego UNO">
+        <div class="card-body">
+          <h3>UNO</h3>
+          <p>Juego de cartas clásico para 2-10 jugadores</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="assets/pingpong.png" class="card-media" alt="Pin Pon">
+        <div class="card-body">
+          <h3>Pin Pon</h3>
+          <p>Set completo con raquetas y pelotas</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="assets/chess.png" class="card-media" alt="Ajedrez">
+        <div class="card-body">
+          <h3>Ajedrez</h3>
+          <p>Tablero y piezas estándar</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2024 Universidad Francisco de Paula Santander. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
