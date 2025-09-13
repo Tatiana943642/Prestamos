@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Préstamo de juegos "Simón Bolívar" </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        @keyframes blob {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+        .page { display: none; }
+        .active-page { display: block; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center gap-2 text-xl font-bold" onclick="showPage('home')">
+                    <i class="fas fa-gamepad"></i>
+                    <span>GameLoan UFPS</span>
+                </a>
+                
+                <nav class="hidden md:flex space-x-1">
+                    <a href="#" onclick="showPage('home')" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium bg-blue-700 text-white">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                    <a href="#" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-book-open"></i>
+                        Catálogo (No disponible)
+                    </a>
+                    <a href="#" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-clipboard-list"></i>
+                        Préstamo (No disponible)
+                    </a>
+                    <a href="#" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-clipboard-list"></i>
+                        Inventario (No disponible)
+                    </a>
+                    <a href="#" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-history"></i>
+                        Historial (No disponible)
+                    </a>
+                </nav>
+                
+                <div class="md:hidden">
+                    <button class="p-2 rounded-md text-gray-300 hover:bg-blue-700 hover:text-white focus:outline-none" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobileMenu" class="md:hidden bg-blue-800 text-white hidden">
+        <div class="container mx-auto px-4 py-2">
+            <a href="#" onclick="showPage('home')" class="block py-2 px-4 hover:bg-blue-700 rounded">Inicio</a>
+            <a href="#" class="block py-2 px-4 hover:bg-blue-700 rounded">Catálogo (No disponible)</a>
+            <a href="#" class="block py-2 px-4 hover:bg-blue-700 rounded">Préstamo (No disponible)</a>
+            <a href="#" class="block py-2 px-4 hover:bg-blue-700 rounded">Inventario (No disponible)</a>
+            <a href="#" class="block py-2 px-4 hover:bg-blue-700 rounded">Historial (No disponible)</a>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <section id="home" class="page active-page relative min-h-screen bg-gray-100 overflow-hidden">
+        <div class="absolute top-20 left-20 w-40 h-40 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-40 right-20 w-60 h-60 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="mb-6">
+                    <i class="fas fa-rocket text-blue-600 text-6xl"></i>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                    ¡Bienvenido a GameLoan UFPS!
+                </h1>
+                <p class="text-xl text-gray-700 mb-8 leading-relaxed">
+                    Sistema de préstamo de juegos de la Universidad Francisco de Paula Santander.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="group flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 opacity-50 cursor-not-allowed">
+                        <i class="fas fa-book-open"></i> Explorar Catálogo
+                    </a>
+                    <a href="#" class="group flex items-center justify-center gap-3 px-8 py-4 bg-white text-blue-600 rounded-2xl font-semibold border-2 border-blue-500 shadow-lg hover:bg-blue-50 transition-all duration-300 opacity-50 cursor-not-allowed">
+                        <i class="fas fa-users"></i> Solicitar Préstamo
+                    </a>
+                </div>
+                <p class="text-gray-500 mt-12">
+                    El sistema está en mantenimiento. Por favor, vuelva más tarde.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Page -->
+    <section id="catalog" class="page container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Catálogo de Juegos</h1>
+        <div class="text-center py-12 text-gray-500">
+            El catálogo no está disponible en este momento.
+        </div>
+    </section>
+
+    <!-- Loan Form Page -->
+    <section id="loan" class="page container mx-auto px-4 py-12 bg-gray-50">
+        <h1 class="text-3xl font-bold text-center mb-8">Solicitar Préstamo</h1>
+        <div class="text-center py-12 text-gray-500">
+            El sistema de préstamos no está disponible en este momento.
+        </div>
+    </section>
+
+    <!-- Inventory Page -->
+    <section id="inventory" class="page container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Inventario Completo</h1>
+        <div class="text-center py-12 text-gray-500">
+            El inventario no está disponible en este momento.
+        </div>
+    </section>
+
+    <!-- History Page -->
+    <section id="history" class="page container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Historial de Préstamos</h1>
+        <div class="text-center py-12 text-gray-500">
+            El historial no está disponible en este momento.
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 GameLoan UFPS. Todos los derechos reservados.</p>
+            <p class="mt-2">Contacto: <a href="mailto:biblioteca@ufps.edu.co" class="underline hover:text-blue-300">biblioteca@ufps.edu.co</a> | Imagen cortesía de UFPS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funciones para navegación
+        function showPage(pageId) {
+            // Ocultar todas las páginas
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+            
+            // Mostrar la página seleccionada
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Cerrar menú móvil si está abierto
+            document.getElementById('mobileMenu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar la página de inicio por defecto
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
