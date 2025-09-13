@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Prestamo de juegos "Simon Bolivar" </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        @keyframes blob {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+        .page { display: none; }
+        .active-page { display: block; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center gap-2 text-xl font-bold" onclick="showPage('home')">
+                    <i class="fas fa-gamepad"></i>
+                    <span>GameLoan UFPS</span>
+                </a>
+                
+                <nav class="hidden md:flex space-x-1">
+                    <a href="#" onclick="showPage('home')" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium bg-blue-700 text-white">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                    <a href="#" onclick="showPage('catalog')" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-book-open"></i>
+                        Catálogo
+                    </a>
+                    <a href="#" onclick="showPage('loan')" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-clipboard-list"></i>
+                        Préstamo
+                    </a>
+                    <a href="#" onclick="showPage('inventory')" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-clipboard-list"></i>
+                        Inventario
+                    </a>
+                    <a href="#" onclick="showPage('history')" class="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-blue-700 hover:text-white">
+                        <i class="fas fa-history"></i>
+                        Historial
+                    </a>
+                </nav>
+                
+                <div class="md:hidden">
+                    <button class="p-2 rounded-md text-gray-300 hover:bg-blue-700 hover:text-white focus:outline-none" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobileMenu" class="md:hidden bg-blue-800 text-white hidden">
+        <div class="container mx-auto px-4 py-2">
+            <a href="#" onclick="showPage('home')" class="block py-2 px-4 hover:bg-blue-700 rounded">Inicio</a>
+            <a href="#" onclick="showPage('catalog')" class="block py-2 px-4 hover:bg-blue-700 rounded">Catálogo</a>
+            <a href="#" onclick="showPage('loan')" class="block py-2 px-4 hover:bg-blue-700 rounded">Préstamo</a>
+            <a href="#" onclick="showPage('inventory')" class="block py-2 px-4 hover:bg-blue-700 rounded">Inventario</a>
+            <a href="#" onclick="showPage('history')" class="block py-2 px-4 hover:bg-blue-700 rounded">Historial</a>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <section id="home" class="page active-page relative min-h-screen bg-gray-100 overflow-hidden">
+        <div class="absolute top-20 left-20 w-40 h-40 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-40 right-20 w-60 h-60 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="mb-6">
+                    <i class="fas fa-rocket text-blue-600 text-6xl"></i>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                    ¡Bienvenido a GameLoan UFPS!
+                </h1>
+                <p class="text-xl text-gray-700 mb-8 leading-relaxed">
+                    Descubre y pide prestados juegos divertidos como UNO, Ping Pong y Ajedrez en la Universidad Francisco de Paula Santander. ¡Organiza tus breaks entre clases con diversión garantizada!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" onclick="showPage('catalog')" class="group flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                        <i class="fas fa-book-open"></i> Explorar Catálogo
+                    </a>
+                    <a href="#" onclick="showPage('loan')" class="group flex items-center justify-center gap-3 px-8 py-4 bg-white text-blue-600 rounded-2xl font-semibold border-2 border-blue-500 shadow-lg hover:bg-blue-50 transition-all duration-300">
+                        <i class="fas fa-users"></i> Solicitar Préstamo
+                    </a>
+                </div>
+                <p class="text-gray-500 mt-12">
+                    ¿Listo para jugar? La biblioteca UFPS te espera con lo mejor en entretenimiento educativo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Page -->
+    <section id="catalog" class="page container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Catálogo de Juegos</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="catalog-container">
+            <!-- Los juegos se cargarán aquí con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Loan Form Page -->
+    <section id="loan" class="page container mx-auto px-4 py-12 bg-gray-50">
+        <h1 class="text-3xl font-bold text-center mb-8">Solicitar Préstamo</h1>
+        <form id="loan-form" class="max-w-lg mx-auto space-y-6">
+            <div>
+                <label class="flex items-center gap-2 text-gray-700 font-medium mb-2">
+                    <i class="fas fa-plus"></i> Juego a prestar
+                </label>
+                <select id="game-select" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="">Selecciona un juego</option>
+                    <!-- Las opciones se llenarán con JavaScript -->
+                </select>
+            </div>
+            <div>
+                <label class="flex items-center gap-2 text-gray-700 font-medium mb-2">
+                    <i class="fas fa-user"></i> ID de Estudiante
+                </label>
+                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tu ID de UFPS" required>
+            </div>
+            <div>
+                <label class="flex items-center gap-2 text-gray-700 font-medium mb-2">
+                    <i class="fas fa-envelope"></i> Email
+                </label>
+                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="tuemail@ufps.edu.co" required>
+            </div>
+            <div>
+                <label class="flex items-center gap-2 text-gray-700 font-medium mb-2">
+                    <i class="fas fa-calendar"></i> Fecha de Devolución
+                </label>
+                <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <button type="submit" class="w-full px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Solicitar Préstamo
+            </button>
+        </form>
+    </section>
+
+    <!-- Inventory Page -->
+    <section id="inventory" class="page container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Inventario Completo</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="inventory-container">
+            <!-- El inventario se cargará aquí con JavaScript -->
+        </div>
+        <p class="text-center text-gray-500 mt-8">
+            Inventario actualizado en tiempo real por la biblioteca UFPS.
+        </p>
+    </section>
+
+    <!-- History Page -->
+    <section id="history" class="page container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Historial de Préstamos</h1>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
+                <thead class="bg-gray-100 text-gray-600 uppercase text-sm">
+                    <tr>
+                        <th class="py-3 px-4 text-left">Juego</th>
+                        <th class="py-3 px-4 text-left">Estudiante</th>
+                        <th class="py-3 px-4 text-left">ID Estudiante</th>
+                        <th class="py-3 px-4 text-left">Fecha Préstamo</th>
+                        <th class="py-3 px-4 text-left">Fecha Devolución</th>
+                        <th class="py-3 px-4 text-left">Estado</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700" id="history-container">
+                    <!-- El historial se cargará aquí con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 GameLoan UFPS. Todos los derechos reservados.</p>
+            <p class="mt-2">Contacto: <a href="mailto:biblioteca@ufps.edu.co" class="underline hover:text-blue-300">biblioteca@ufps.edu.co</a> | Imagen cortesía de UFPS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Datos de games.js
+        const games = [
+            {
+                id: 1,
+                title: "UNO",
+                description: "El clásico juego de cartas donde gritas '¡UNO!' antes de ganar. Perfecto para fiestas rápidas con amigos.",
+                image: "https://images.unsplash.com/photo-1570549717069-33bede99b264?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                category: "Cartas",
+                available: true,
+                stock: 5
+            },
+            {
+                id: 2,
+                title: "Ping Pong",
+                description: "Set de tenis de mesa para competencias universitarias. ¡Mejora tu puntería y diviértete en grupo!",
+                image: "https://images.unsplash.com/photo-1558618047-3c8c75e4c4d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                category: "Deportes",
+                available: false,
+                stock: 2
+            },
+            {
+                id: 3,
+                title: "Ajedrez",
+                description: "El juego de estrategia eterno. Ideal para entrenar la mente entre clases en la UFPS.",
+                image: "https://images.unsplash.com/photo-1578898889060-69b25d5dd24d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                category: "Estrategia",
+                available: true,
+                stock: 8
+            }
+        ];
+
+        // Datos de History.js
+        const loanHistory = [
+            {
+                id: 1,
+                gameTitle: "UNO",
+                studentName: "Juan Pérez",
+                studentId: "2023001",
+                loanDate: "2025-09-01",
+                returnDate: "2025-09-08",
+                status: "Devuelto"
+            },
+            {
+                id: 2,
+                gameTitle: "Ajedrez",
+                studentName: "María López",
+                studentId: "2023005",
+                loanDate: "2025-09-05",
+                returnDate: "2025-09-12",
+                status: "En Préstamo"
+            },
+            {
+                id: 3,
+                gameTitle: "Ping Pong",
+                studentName: "Carlos Ramírez",
+                studentId: "2023003",
+                loanDate: "2025-09-07",
+                returnDate: "2025-09-14",
+                status: "Devuelto"
+            }
+        ];
+
+        // Funciones para navegación
+        function showPage(pageId) {
+            // Ocultar todas las páginas
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+            
+            // Mostrar la página seleccionada
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Si es catálogo o inventario, cargar los datos
+            if (pageId === 'catalog') {
+                loadCatalog();
+            } else if (pageId === 'inventory') {
+                loadInventory();
+            } else if (pageId === 'history') {
+                loadHistory();
+            } else if (pageId === 'loan') {
+                loadGameOptions();
+            }
+            
+            // Cerrar menú móvil si está abierto
+            document.getElementById('mobileMenu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Cargar catálogo de juegos
+        function loadCatalog() {
+            const container = document.getElementById('catalog-container');
+            container.innerHTML = '';
+            
+            games.forEach(game => {
+                const gameCard = `
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <div class="relative">
+                            <img src="${game.image}" alt="${game.title}" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                ${game.category}
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800">${game.title}</h3>
+                            <p class="text-gray-600 mt-2">${game.description}</p>
+                            <p class="text-gray-500 mt-2">Categoría: ${game.category}</p>
+                            <p class="px-3 py-1 rounded-full text-sm font-medium mt-3 ${game.available ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                ${game.available ? 'Disponible' : 'Prestado'} (${game.stock} en stock)
+                            </p>
+                            <div class="mt-6 flex justify-between items-center">
+                                <a href="#" class="inline-flex items-center gap-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                                    <i class="fas fa-eye"></i> Ver Detalles
+                                </a>
+                                ${game.available ? `
+                                <a href="#" onclick="showPage('loan')" class="inline-flex items-center gap-1 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+                                    Solicitar
+                                </a>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += gameCard;
+            });
+        }
+
+        // Cargar inventario
+        function loadInventory() {
+            const container = document.getElementById('inventory-container');
+            container.innerHTML = '';
+            
+            games.forEach(game => {
+                const inventoryItem = `
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i class="fas fa-box text-blue-600"></i>
+                            <h3 class="text-xl font-bold text-gray-800">${game.title}</h3>
+                        </div>
+                        <p class="text-gray-600">${game.description}</p>
+                        <p class="text-gray-500 mt-2">Categoría: ${game.category}</p>
+                        <p class="text-gray-500 mt-2">Stock Total: ${game.stock} unidades</p>
+                        <p class="px-3 py-1 rounded-full text-sm font-medium mt-3 ${game.available ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                            ${game.available ? 'Disponible' : 'Prestado'}
+                        </p>
+                    </div>
+                `;
+                container.innerHTML += inventoryItem;
+            });
+        }
+
+        // Cargar historial
+        function loadHistory() {
+            const container = document.getElementById('history-container');
+            container.innerHTML = '';
+            
+            loanHistory.forEach(loan => {
+                const historyItem = `
+                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                        <td class="py-3 px-4">${loan.gameTitle}</td>
+                        <td class="py-3 px-4 flex items-center gap-2">
+                            <i class="fas fa-user text-gray-400"></i>
+                            ${loan.studentName}
+                        </td>
+                        <td class="py-3 px-4">${loan.studentId}</td>
+                        <td class="py-3 px-4 flex items-center gap-2">
+                            <i class="fas fa-calendar text-gray-400"></i>
+                            ${loan.loanDate}
+                        </td>
+                        <td class="py-3 px-4 flex items-center gap-2">
+                            <i class="fas fa-calendar text-gray-400"></i>
+                            ${loan.returnDate}
+                        </td>
+                        <td class="py-3 px-4">
+                            <div class="flex items-center gap-2">
+                                ${loan.status === 'Devuelto' ? 
+                                    '<i class="fas fa-check-circle text-green-500"></i>' : 
+                                    '<i class="fas fa-clock text-yellow-500"></i>'}
+                                <span class="${loan.status === 'Devuelto' ? 'text-green-600' : 'text-yellow-600'}">
+                                    ${loan.status}
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                container.innerHTML += historyItem;
+            });
+        }
+
+        // Cargar opciones de juegos en el formulario
+        function loadGameOptions() {
+            const select = document.getElementById('game-select');
+            select.innerHTML = '<option value="">Selecciona un juego</option>';
+            
+            games.filter(game => game.available).forEach(game => {
+                const option = document.createElement('option');
+                option.value = game.id;
+                option.textContent = `${game.title} (${game.stock} disponibles)`;
+                select.appendChild(option);
+            });
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('loan-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Solicitud enviada! Revisa tu email para confirmar.');
+            this.reset();
+        });
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar la página de inicio por defecto
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
