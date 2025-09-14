@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Préstamos Universidad Simón Bolívar</title>
+    <!-- Favicon (se usará el mismo logo) -->
+    <link rel="icon" type="image/png" href="escudo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -81,6 +83,14 @@
         .logo-usb-green {
             background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
         }
+        
+        /* Estilo para el logo de imagen */
+        .logo-image {
+            max-width: 180px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -148,12 +158,8 @@
         <div class="container mx-auto px-4 py-20 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
                 <div class="mb-6">
-                    <!-- Logo principal de la Universidad Simón Bolívar -->
-                    <div class="logo-usb logo-usb-large mx-auto mb-6">
-                        <span>Universidad</span>
-                        <span>Simón</span>
-                        <span>Bolívar</span>
-                    </div>
+                    <!-- Logo principal de la Universidad Simón Bolívar como imagen -->
+                    <img src="escudo.png" alt="Universidad Simón Bolívar" class="logo-image mb-6">
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent mb-6">
                     Juego de Préstamos<br>Universidad Simón Bolívar
@@ -209,12 +215,8 @@
         <div class="container mx-auto px-4 py-20 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
                 <div class="mb-6">
-                    <!-- Logo principal de la Universidad Simón Bolívar (versión verde) -->
-                    <div class="logo-usb logo-usb-large logo-usb-green mx-auto mb-6">
-                        <span>Universidad</span>
-                        <span>Simón</span>
-                        <span>Bolívar</span>
-                    </div>
+                    <!-- Logo principal de la Universidad Simón Bolívar (versión imagen) -->
+                    <img src="escudo.png" alt="Universidad Simón Bolívar" class="logo-image mb-6">
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-secondary-600 to-secondary-800 bg-clip-text text-transparent mb-6">
                     Juego de Préstamos<br>Universidad Simón Bolívar
