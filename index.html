@@ -185,7 +185,7 @@
     </section>
 
     <!-- Login Page (siempre visible inicialmente) -->
-    <section id="login" class="page active-page relative min-h-screen bg-gray-100 overflow-hidden">
+    <section id="login" class="page relative min-h-screen bg-gray-100 overflow-hidden">
         <div class="absolute top-20 left-20 w-40 h-40 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div class="absolute top-40 right-20 w-60 h-60 bg-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
         <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-green-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
@@ -526,6 +526,26 @@
         let loggedIn = false;
         let currentPage = 'login';
 
+        // Guardar estado en localStorage
+        function saveState() {
+            localStorage.setItem('loggedIn', loggedIn);
+            localStorage.setItem('currentPage', currentPage);
+        }
+
+        // Cargar estado desde localStorage
+        function loadState() {
+            const savedLoggedIn = localStorage.getItem('loggedIn');
+            const savedCurrentPage = localStorage.getItem('currentPage');
+            
+            if (savedLoggedIn !== null) {
+                loggedIn = savedLoggedIn === 'true';
+            }
+            
+            if (savedCurrentPage !== null) {
+                currentPage = savedCurrentPage;
+            }
+        }
+
         // Funciones para navegación
         function showPage(pageId) {
             if (!loggedIn && pageId !== 'login') {
@@ -544,6 +564,9 @@
             // Actualizar navegación activa
             currentPage = pageId;
             updateNavigation();
+            
+            // Guardar estado
+            saveState();
             
             // Cerrar menú móvil si está abierto
             document.getElementById('mobileMenu').classList.add('hidden');
@@ -579,6 +602,7 @@
         function login() {
             loggedIn = true;
             document.getElementById('mainHeader').classList.remove('hidden');
+            saveState();
             showPage('home');
         }
 
@@ -586,6 +610,7 @@
         function logout() {
             loggedIn = false;
             document.getElementById('mainHeader').classList.add('hidden');
+            saveState();
             showPage('login');
         }
 
@@ -707,8 +732,16 @@
 
         // Inicializar la página
         document.addEventListener('DOMContentLoaded', function() {
-            // Cargar la página de login por defecto
-            showPage('login');
+            // Cargar estado guardado
+            loadState();
+            
+            // Mostrar la página según el estado
+            if (loggedIn) {
+                document.getElementById('mainHeader').classList.remove('hidden');
+                showPage(currentPage);
+            } else {
+                showPage('login');
+            }
         });
     </script>
 </body>
