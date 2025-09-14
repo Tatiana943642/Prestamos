@@ -7,6 +7,8 @@
     <!-- Favicon (se usará el mismo logo) -->
     <link rel="icon" type="image/png" href="escudo.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -14,10 +16,10 @@
                 extend: {
                     colors: {
                         primary: {
-                            500: '#0d47a1',
-                            600: '#1565c0',
-                            700: '#1976d2',
-                            800: '#0d47a1',
+                            500: '#1b5e20',
+                            600: '#2e7d32',
+                            700: '#388e3c',
+                            800: '#1b5e20',
                         },
                         secondary: {
                             500: '#1b5e20',
@@ -57,7 +59,7 @@
             justify-content: center;
             font-weight: bold;
             text-align: center;
-            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
             color: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -77,11 +79,6 @@
             font-size: 16px;
             padding: 12px;
             line-height: 1.2;
-        }
-        
-        /* Logo verde para la página de login */
-        .logo-usb-green {
-            background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
         }
         
         /* Estilo para el logo de imagen */
@@ -151,9 +148,9 @@
 
     <!-- Home Page (solo visible después de iniciar sesión) -->
     <section id="home" class="page relative min-h-screen bg-gray-100 overflow-hidden">
-        <div class="absolute top-20 left-20 w-40 h-40 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div class="absolute top-40 right-20 w-60 h-60 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div class="absolute top-20 left-20 w-40 h-40 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-40 right-20 w-60 h-60 bg-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-green-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
         
         <div class="container mx-auto px-4 py-20 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
@@ -170,34 +167,34 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-blue-600 mb-4">
+                        <div class="text-green-600 mb-4">
                             <i class="fas fa-clipboard-list text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Préstamos</h3>
                         <p class="text-gray-600">Gestiona los préstamos de juegos a estudiantes y personal universitario.</p>
-                        <button onclick="showPage('loan')" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full">
+                        <button onclick="showPage('loan')" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors w-full">
                             Acceder
                         </button>
                     </div>
                     
                     <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-blue-600 mb-4">
+                        <div class="text-green-600 mb-4">
                             <i class="fas fa-boxes text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Inventario</h3>
                         <p class="text-gray-600">Administra el inventario de juegos disponibles y su estado actual.</p>
-                        <button onclick="showPage('inventory')" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full">
+                        <button onclick="showPage('inventory')" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors w-full">
                             Acceder
                         </button>
                     </div>
                     
                     <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-blue-600 mb-4">
+                        <div class="text-green-600 mb-4">
                             <i class="fas fa-history text-4xl"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Historial</h3>
                         <p class="text-gray-600">Consulta el historial completo de préstamos y devoluciones.</p>
-                        <button onclick="showPage('history')" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full">
+                        <button onclick="showPage('history')" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors w-full">
                             Acceder
                         </button>
                     </div>
@@ -261,9 +258,9 @@
             <div class="bg-white p-6 rounded-xl shadow-lg">
                 <h2 class="text-xl font-bold mb-4 text-primary-800">Resumen de Préstamos</h2>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-blue-100 p-4 rounded-lg text-center">
-                        <p class="text-3xl font-bold text-blue-800">12</p>
-                        <p class="text-blue-600">Préstamos activos</p>
+                    <div class="bg-green-100 p-4 rounded-lg text-center">
+                        <p class="text-3xl font-bold text-green-800">12</p>
+                        <p class="text-green-600">Préstamos activos</p>
                     </div>
                     <div class="bg-yellow-100 p-4 rounded-lg text-center">
                         <p class="text-3xl font-bold text-yellow-800">3</p>
@@ -275,7 +272,7 @@
             <div class="bg-white p-6 rounded-xl shadow-lg">
                 <h2 class="text-xl font-bold mb-4 text-primary-800">Acciones Rápidas</h2>
                 <div class="space-y-3">
-                    <button class="w-full px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                    <button class="w-full px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                         <i class="fas fa-plus mr-2"></i> Nuevo Préstamo
                     </button>
                     <button class="w-full px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
@@ -333,9 +330,9 @@
             <div class="bg-white p-6 rounded-xl shadow-lg">
                 <h2 class="text-xl font-bold mb-4 text-primary-800">Resumen de Inventario</h2>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-blue-100 p-4 rounded-lg text-center">
-                        <p class="text-3xl font-bold text-blue-800">8</p>
-                        <p class="text-blue-600">Tipos de juegos</p>
+                    <div class="bg-green-100 p-4 rounded-lg text-center">
+                        <p class="text-3xl font-bold text-green-800">8</p>
+                        <p class="text-green-600">Tipos de juegos</p>
                     </div>
                     <div class="bg-green-100 p-4 rounded-lg text-center">
                         <p class="text-3xl font-bold text-green-800">42</p>
@@ -347,7 +344,7 @@
             <div class="bg-white p-6 rounded-xl shadow-lg">
                 <h2 class="text-xl font-bold mb-4 text-primary-800">Acciones de Inventario</h2>
                 <div class="space-y-3">
-                    <button class="w-full px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                    <button class="w-full px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                         <i class="fas fa-plus-circle mr-2"></i> Agregar Juego
                     </button>
                     <button class="w-full px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
@@ -382,18 +379,18 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div class="flex items-center gap-2 mb-4">
-                    <i class="fas fa-chess-board text-primary-600 text-xl"></i>
+                    <i class="fas fa-chess-board text-green-600 text-xl"></i>
                     <h3 class="text-xl font-bold text-gray-800">Ajedrez</h3>
                 </div>
                 <p class="text-gray-600 mb-4">Juego de estrategia para 2 jugadores</p>
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-gray-700 font-medium">En stock: <span class="text-primary-600">8</span></span>
+                    <span class="text-gray-700 font-medium">En stock: <span class="text-green-600">8</span></span>
                     <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Disponible</span>
                 </div>
                 <div class="flex justify-between">
                     <span class="text-sm text-gray-500">Estado: <span class="font-medium">Bueno</span></span>
                     <div class="flex gap-2">
-                        <button class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs hover:bg-blue-200">Editar</button>
+                        <button class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs hover:bg-green-200">Editar</button>
                         <button class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs hover:bg-yellow-200">Estado</button>
                     </div>
                 </div>
@@ -401,18 +398,18 @@
             
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div class="flex items-center gap-2 mb-4">
-                    <i class="fas fa-cards text-primary-600 text-xl"></i>
+                    <i class="fas fa-cards text-green-600 text-xl"></i>
                     <h3 class="text-xl font-bold text-gray-800">UNO</h3>
                 </div>
                 <p class="text-gray-600 mb-4">Juego de cartas para 2-10 jugadores</p>
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-gray-700 font-medium">En stock: <span class="text-primary-600">12</span></span>
+                    <span class="text-gray-700 font-medium">En stock: <span class="text-green-600">12</span></span>
                     <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Disponible</span>
                 </div>
                 <div class="flex justify-between">
                     <span class="text-sm text-gray-500">Estado: <span class="font-medium">Excelente</span></span>
                     <div class="flex gap-2">
-                        <button class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs hover:bg-blue-200">Editar</button>
+                        <button class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs hover:bg-green-200">Editar</button>
                         <button class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs hover:bg-yellow-200">Estado</button>
                     </div>
                 </div>
@@ -420,18 +417,18 @@
             
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div class="flex items-center gap-2 mb-4">
-                    <i class="fas fa-puzzle-piece text-primary-600 text-xl"></i>
+                    <i class="fas fa-puzzle-piece text-green-600 text-xl"></i>
                     <h3 class="text-xl font-bold text-gray-800">Jenga</h3>
                 </div>
                 <p class="text-gray-600 mb-4">Juego de habilidad física y mental</p>
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-gray-700 font-medium">En stock: <span class="text-primary-600">6</span></span>
+                    <span class="text-gray-700 font-medium">En stock: <span class="text-green-600">6</span></span>
                     <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">Pocas unidades</span>
                 </div>
                 <div class="flex justify-between">
                     <span class="text-sm text-gray-500">Estado: <span class="font-medium">Reparación</span></span>
                     <div class="flex gap-2">
-                        <button class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs hover:bg-blue-200">Editar</button>
+                        <button class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs hover:bg-green-200">Editar</button>
                         <button class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs hover:bg-yellow-200">Estado</button>
                     </div>
                 </div>
@@ -461,7 +458,10 @@
                         <option value="Vencido">Vencido</option>
                     </select>
                     <input type="date" id="date-filter" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                    <button onclick="filterHistory()" class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">Buscar</button>
+                    <button onclick="filterHistory()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Buscar</button>
+                    <button onclick="downloadPDF()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                        <i class="fas fa-file-pdf mr-2"></i> Descargar PDF
+                    </button>
                 </div>
                 <div id="filter-result" class="mt-4 text-sm text-gray-600 hidden">
                     <!-- Aquí se mostrarán los resultados del filtro -->
@@ -527,7 +527,7 @@
     <footer class="bg-gray-800 text-white py-6">
         <div class="container mx-auto px-4 text-center">
             <p>2025 Juego de Préstamos Universidad Simón Bolívar. Todos los derechos reservados.</p>
-            <p class="mt-2">Contacto: <a href="mailto:j_perez53@unisimon.edu.co" class="underline hover:text-blue-300">j_perez53@unisimon.edu.co</a></p>
+            <p class="mt-2">Contacto: <a href="mailto:j_perez53@unisimon.edu.co" class="underline hover:text-green-300">j_perez53@unisimon.edu.co</a></p>
         </div>
     </footer>
 
@@ -636,6 +636,63 @@
                     tableBody.appendChild(row);
                 });
             }
+        }
+
+        // Función para descargar PDF
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Título
+            doc.setFontSize(20);
+            doc.setTextColor(40, 100, 40);
+            doc.text('Reporte de Historial de Préstamos', 105, 15, { align: 'center' });
+            
+            // Fecha de generación
+            doc.setFontSize(12);
+            doc.setTextColor(100, 100, 100);
+            doc.text(`Generado el: ${new Date().toLocaleDateString()}`, 105, 22, { align: 'center' });
+            
+            // Obtener datos filtrados o todos los datos
+            const gameFilter = document.getElementById('game-filter').value;
+            const statusFilter = document.getElementById('status-filter').value;
+            const dateFilter = document.getElementById('date-filter').value;
+            const formattedDateFilter = dateFilter ? new Date(dateFilter).toLocaleDateString('es-ES') : '';
+            
+            const filteredData = loanHistory.filter(item => {
+                const matchesGame = !gameFilter || item.game === gameFilter;
+                const matchesStatus = !statusFilter || item.status === statusFilter;
+                const matchesDate = !formattedDateFilter || item.loanDate === formattedDateFilter;
+                
+                return matchesGame && matchesStatus && matchesDate;
+            });
+            
+            // Preparar datos para la tabla
+            const tableData = filteredData.map(item => [
+                item.game,
+                item.user,
+                item.loanDate,
+                item.returnDate,
+                item.status
+            ]);
+            
+            // Crear tabla
+            doc.autoTable({
+                head: [['Juego', 'Usuario', 'Fecha Préstamo', 'Fecha Devolución', 'Estado']],
+                body: tableData,
+                startY: 30,
+                theme: 'grid',
+                headStyles: {
+                    fillColor: [27, 94, 32],
+                    textColor: 255
+                },
+                alternateRowStyles: {
+                    fillColor: [240, 245, 240]
+                }
+            });
+            
+            // Guardar PDF
+            doc.save('reporte_prestamos.pdf');
         }
 
         // Manejar envío del formulario de login
